@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Prep Prompts — AI-Powered Teaching Prompt Cards</title>
+<meta name="description" content="Universal, AI-powered teaching prompts as visually branded prompt cards. Any Subject • Any Grade • Editable • Differentiated.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<meta property="og:title" content="No Prep Prompts">
+<meta property="og:description" content="Universal, AI-powered teaching prompts as branded prompt cards.">
+<meta property="og:image" content="/assets/logo.png">
+<meta property="og:type" content="website">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="No Prep Prompts logo">
+      <span>No Prep Prompts</span>
+    </a>
+    <nav class="nav">
+      <a href="/prompts.html">Prompt Library</a>
+      <a href="/subscribe.html">Subscribe</a>
+      <a href="https://www.teacherspayteachers.com" target="_blank" rel="noopener">TPT Store</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1 class="title">AI-Powered Prompt Cards for <em>Any</em> Grade & Subject</h1>
+    <p class="subtitle">Save hours each week with universal, editable prompts that generate ready-to-use teaching materials — from procedures and parent letters to choice boards and leveled texts.</p>
+    <div class="cta">
+      <a class="btn accent" href="/prompts.html">Explore Prompt Library</a>
+      <a class="btn secondary" href="/subscribe.html">Get Weekly Prompts</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Why No Prep Prompts?</p>
+    <h2 class="lead">Any Subject • Any Grade • Editable • Differentiated</h2>
+    <div class="grid" style="margin-top:14px">
+      <div class="card">
+        <h3>Universal & Flexible</h3>
+        <p>Every prompt is designed to work in ELA, Social Studies, Science, Math — you name it. Swap in your topic and grade, generate, and teach.</p>
+      </div>
+      <div class="card">
+        <h3>Built-In Differentiation</h3>
+        <p>Prompts include scaffolds for ELL/IEP/504, multiple reading levels, and options for student choice — without losing rigor.</p>
+      </div>
+      <div class="card">
+        <h3>Ready in Minutes</h3>
+        <p>Copy, paste, customize, and go. Watch quick demos linked on each card to see exactly how it works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="notice">
+      <strong>New here?</strong> Start with the free Starter Pack in the Prompt Library, then subscribe for weekly drops and full library access.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Featured Prompts</p>
+    <div id="featured" class="grid"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="/assets/logo.png" alt="No Prep Prompts logo small">
+      <p><strong>No Prep Prompts™</strong><br> © 2025. All rights reserved.</p>
+    </div>
+    <nav class="foot-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@noprepprompts.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js"></script>
+
+<script>
+fetch('/js/catalog.json').then(r=>r.json()).then(items=>{
+  const featured = document.getElementById('featured');
+  items.slice(0,6).forEach(it=>{
+    const el = document.createElement('article');
+    el.className='card'; el.innerHTML = `
+      <h3>${it.title}</h3>
+      <p>${it.subtitle}</p>
+      <div class="badges">${it.tags.map(t=>`<span class='badge'>${t}</span>`).join('')}</div>
+      <p style="margin-top:10px">
+        <a class="btn primary" href="/prompts.html#${it.id}">View</a>
+        <a class="btn" href="${it.demo}" target="_blank" rel="noopener">Watch Demo</a>
+      </p>`;
+    featured.appendChild(el);
+  });
+});
+</script>
+</body>
+</html>

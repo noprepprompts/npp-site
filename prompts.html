@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Prep Prompts — AI-Powered Teaching Prompt Cards</title>
+<meta name="description" content="Universal, AI-powered teaching prompts as visually branded prompt cards. Any Subject • Any Grade • Editable • Differentiated.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<meta property="og:title" content="No Prep Prompts">
+<meta property="og:description" content="Universal, AI-powered teaching prompts as branded prompt cards.">
+<meta property="og:image" content="/assets/logo.png">
+<meta property="og:type" content="website">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="No Prep Prompts logo">
+      <span>No Prep Prompts</span>
+    </a>
+    <nav class="nav">
+      <a href="/prompts.html">Prompt Library</a>
+      <a href="/subscribe.html">Subscribe</a>
+      <a href="https://www.teacherspayteachers.com" target="_blank" rel="noopener">TPT Store</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <h1 class="lead">Prompt Library</h1>
+    <p>Browse the growing library. Click a prompt to view details, watch a demo, and grab the copy‑and‑paste text.</p>
+    <div class="form-row" style="margin-top:14px">
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Search titles, tags, descriptions…">
+    </div>
+    <div class="badges filter-tags" style="margin:10px 0 8px">
+      <button class="badge" data-tag="Classroom Management">Classroom Mgmt</button>
+      <button class="badge" data-tag="First Week">First Week</button>
+      <button class="badge" data-tag="Differentiation">Differentiation</button>
+      <button class="badge" data-tag="Literacy">Literacy</button>
+      <button class="badge" data-tag="Family Communication">Family</button>
+      <button class="badge" data-tag="Student Voice">Student Voice</button>
+    </div>
+    <div id="catalog" class="grid" style="margin-top:12px"></div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="/assets/logo.png" alt="No Prep Prompts logo small">
+      <p><strong>No Prep Prompts™</strong><br> © 2025. All rights reserved.</p>
+    </div>
+    <nav class="foot-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@noprepprompts.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/js/app.js"></script>
+
+<script>
+fetch('/js/catalog.json').then(r=>r.json()).then(items=>{
+  const wrap = document.getElementById('catalog');
+  items.forEach(it=>{
+    const el = document.createElement('article');
+    el.className='card'; el.setAttribute('id', it.id); el.dataset.card = true; el.dataset.tags = it.tags.join(',');
+    el.innerHTML = `
+      <h3>${it.title}</h3>
+      <p>${it.subtitle}</p>
+      <div class="badges">${it.tags.map(t=>`<span class='badge'>${t}</span>`).join('')}</div>
+      <p style="margin-top:10px">
+        <a class="btn primary" href="${it.product}" target="_blank" rel="noopener">Get on TPT</a>
+        <a class="btn" href="${it.demo}" target="_blank" rel="noopener">Watch Demo</a>
+        <button class="btn" onclick="openModal('${it.id}')">Copy Prompt</button>
+      </p>`;
+    wrap.appendChild(el);
+  });
+});
+
+function openModal(id){
+  const modal = document.getElementById('modal');
+  const title = modal.querySelector('h3');
+  const pre = modal.querySelector('pre');
+  fetch('/js/catalog.json').then(r=>r.json()).then(items=>{
+    const item = items.find(x=>x.id===id);
+    title.textContent = item.card;
+    pre.textContent = `Copy and paste Prompt for ${item.title}\n\n[Insert the full prompt text from your card here.]`;
+    modal.showModal();
+  });
+}
+function closeModal(){ document.getElementById('modal').close(); }
+</script>
+
+<dialog id="modal" style="max-width:800px;width:90%">
+  <form method="dialog">
+    <h3 style="margin-top:0">Prompt</h3>
+    <pre style="background:#0b1020;color:#e7e9ee;padding:14px;border-radius:10px;white-space:pre-wrap;font-size:13px"></pre>
+    <div class="form-actions" style="display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn">Close</button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>
