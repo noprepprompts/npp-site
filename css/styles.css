@@ -81,3 +81,31 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
 
 /* filters on prompts page */
 .filter-tags button.on{outline:3px solid var(--mint)}
+
+/* === NPP quick polish overrides === */
+.brand img{
+  height:40px;           /* was 32px */
+  width:auto;
+}
+
+@media (max-width:720px){
+  .brand img{ height:34px; }  /* a tad smaller on phones */
+}
+/* Header spacing + nav weight */
+.site-header .wrap{ height:72px; }
+.nav a{ margin-left:22px; font-weight:700; }
+
+/* Hero breathing room + max width on text */
+.hero{ padding:88px 0 64px; }
+.hero .title{ font-size:44px; letter-spacing:-.01em; }
+.hero .subtitle{ font-size:18px; max-width:760px; }
+
+/* Buttons: slightly larger + tighter radius */
+.btn{ padding:12px 18px; border-radius:12px; }
+
+/* Cards: a bit more padding + grid gap */
+.grid{ gap:20px; }
+.card{ padding:20px; }
+
+/* Footer: balance sizes */
+.site-footer img{ height:32px; }
