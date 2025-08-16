@@ -41,14 +41,26 @@ a:hover{text-decoration:underline}
   background:var(--navy);color:#fff;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset;
 }
+/* Taller header + no clipping */
 .site-header .wrap{
-  display:flex;align-items:center;justify-content:space-between;height:76px
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:86px;   /* was height:76px */
+  height:auto;       /* let content define height */
+  padding:10px 20px; /* a touch of breathing room */
 }
 .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:18px}
 /* Bigger, responsive logo in header */
+/* Size by height so it never exceeds the header */
 .brand img{
-  width:clamp(140px, 20vw, 180px);
-  height:auto;
+  max-height:64px;   /* desktop */
+  width:auto;
+  display:block;     /* removes extra baseline gap */
+}
+
+@media (max-width:720px){
+  .brand img{ max-height:52px; }  /* mobile */
 }
 .nav a{
   color:#fff;font-weight:600;margin-left:26px;letter-spacing:.02em;
