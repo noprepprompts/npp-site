@@ -1,30 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>No Prep Prompts — AI-Powered Teaching Prompt Cards</title>
   <meta name="description" content="Universal, AI-powered teaching prompts as visually branded prompt cards. Any Subject • Any Grade • Editable • Differentiated.">
-
-  <!-- Favicon / Open Graph images: use relative paths on GitHub Pages -->
-  <link rel="icon" href="assets/logo.png">
-  <meta property="og:title" content="No Prep Prompts">
-  <meta property="og:description" content="Universal, AI-powered teaching prompts as branded prompt cards.">
-  <meta property="og:image" content="assets/logo.png">
-  <meta property="og:type" content="website">
-
-  <!-- Fonts + CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/logo.png" />
+  <meta property="og:title" content="No Prep Prompts" />
+  <meta property="og:description" content="Universal, AI-powered teaching prompts as branded prompt cards." />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="No Prep Prompts logo">
+      <img src="assets/logo-white.png" alt="No Prep Prompts logo" />
       <span>No Prep Prompts</span>
     </a>
     <nav class="nav">
@@ -37,7 +33,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1 class="title">AI-Powered Prompt Cards for <em>Any</em> Grade & Subject</h1>
+    <h1 class="title">AI-Powered Prompt Cards for <em>Any</em> Grade &amp; Subject</h1>
     <p class="subtitle">Save hours each week with universal, editable prompts that generate ready-to-use teaching materials — from procedures and parent letters to choice boards and leveled texts.</p>
     <div class="cta">
       <a class="btn accent" href="prompts.html">Explore Prompt Library</a>
@@ -50,19 +46,19 @@
   <div class="wrap">
     <p class="kicker">Why No Prep Prompts?</p>
     <h2 class="lead">Any Subject • Any Grade • Editable • Differentiated</h2>
-    <div class="grid" style="margin-top:14px">
-      <div class="card">
-        <h3>Universal & Flexible</h3>
+    <div class="grid" style="margin-top:16px">
+      <article class="card">
+        <h3>Universal &amp; Flexible</h3>
         <p>Every prompt is designed to work in ELA, Social Studies, Science, Math — you name it. Swap in your topic and grade, generate, and teach.</p>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <h3>Built-In Differentiation</h3>
         <p>Prompts include scaffolds for ELL/IEP/504, multiple reading levels, and options for student choice — without losing rigor.</p>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <h3>Ready in Minutes</h3>
         <p>Copy, paste, customize, and go. Watch quick demos linked on each card to see exactly how it works.</p>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -85,7 +81,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-brand">
-      <img src="assets/logo.png" alt="No Prep Prompts logo small">
+      <img src="assets/logo-white.png" alt="No Prep Prompts logo small" />
       <p><strong>No Prep Prompts™</strong><br> © 2025. All rights reserved.</p>
     </div>
     <nav class="foot-links">
@@ -96,10 +92,8 @@
   </div>
 </footer>
 
-<!-- JS -->
 <script src="js/app.js"></script>
 <script>
-  // Use a relative path for GitHub Pages
   fetch('js/catalog.json').then(r => r.json()).then(items => {
     const featured = document.getElementById('featured');
     items.slice(0,6).forEach(it => {
