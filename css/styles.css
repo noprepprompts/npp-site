@@ -1,4 +1,4 @@
-/* === No Prep Prompts — Polished Stylesheet (v2) === */
+/* === No Prep Prompts — Polished Stylesheet (v2.2 with social icons) === */
 
 /* Brand tokens */
 :root{
@@ -45,7 +45,7 @@ a:hover{text-decoration:underline}
   display:flex;align-items:center;justify-content:space-between;height:76px
 }
 .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:18px}
-.brand img{height:44px;width:auto}               /* +4px from v1 for balance */
+.brand img{height:48px;width:auto}               /* ~10% larger */
 .nav a{
   color:#fff;font-weight:600;margin-left:26px;letter-spacing:.02em;
   position:relative;padding:4px 0
@@ -107,6 +107,7 @@ a:hover{text-decoration:underline}
   font-size:12px;background:var(--mint);color:#fff;
   padding:5px 10px;border-radius:999px
 }
+.badge.free{background:#10B981}
 
 /* Notice / promo strip */
 .notice{
@@ -135,17 +136,21 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
   display:flex;justify-content:space-between;align-items:center;gap:18px;
   padding:26px 20px
 }
-.site-footer img{height:32px}
+.site-footer img{height:34px}
 .foot-links a{color:#fff;margin-left:22px;font-weight:600}
 .foot-links a:hover{color:var(--mint)}
 
-/* ===== PROMPTS LIBRARY helpers (if/when used) ===== */
-.filter-tags{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
-.filter-tags button{
-  padding:8px 12px;border-radius:999px;border:1px solid #E5E7EB;background:#fff;cursor:pointer;
-  font-weight:600
+/* Social icons */
+.social{display:flex;gap:14px;align-items:center}
+.social a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:999px;border:1px solid rgba(255,255,255,.35);
+  color:#fff;transition:all .18s ease
 }
-.filter-tags button.on{outline:3px solid var(--mint);border-color:transparent}
+.social a:hover{
+  color:#063a31;background:var(--mint);border-color:var(--mint)
+}
+.social svg{width:18px;height:18px;display:block}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:900px){
@@ -153,11 +158,12 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
 }
 @media (max-width:720px){
   .site-header .wrap{height:70px}
-  .brand img{height:36px}
+  .brand img{height:40px}
   .hero{padding:84px 18px 54px}
   .hero .title{font-size:34px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-  .site-footer .wrap{flex-direction:column;align-items:flex-start}
+  .site-footer .wrap{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-links{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0}
 }
 
 /* ===== ACCESSIBILITY ===== */
