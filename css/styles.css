@@ -182,3 +182,14 @@ footer img {
   border-radius: 4px;
   margin-bottom: 0.5rem;
 }
+/* Logo keeps full visibility on blue header/footer */
+.brand img,
+.foot-brand img,
+.logo {
+  height: 60px;      /* adjust if you want it larger (e.g., 64–72px) */
+  width: auto;
+  object-fit: contain;
+  background: #fff;
+  padding: 4px;
+  border-radius: 6px;
+}
