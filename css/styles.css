@@ -1,4 +1,4 @@
-/* === No Prep Prompts — Polished Stylesheet (v2.3, bigger header logo) === */
+/* === No Prep Prompts — Stylesheet (v2.4, header logo fix) === */
 
 /* Brand tokens */
 :root{
@@ -41,27 +41,31 @@ a:hover{text-decoration:underline}
   background:var(--navy);color:#fff;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset;
 }
-/* Taller header + no clipping */
+
+/* Let the header grow to fit the logo; no clipping */
 .site-header .wrap{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  min-height:86px;   /* was height:76px */
-  height:auto;       /* let content define height */
-  padding:10px 20px; /* a touch of breathing room */
-}
-.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:18px}
-/* Bigger, responsive logo in header */
-/* Size by height so it never exceeds the header */
-.brand img{
-  max-height:64px;   /* desktop */
-  width:auto;
-  display:block;     /* removes extra baseline gap */
+  min-height:90px;    /* room for logo */
+  height:auto;        /* remove fixed height */
+  padding:10px 20px;  /* breathing room */
 }
 
-@media (max-width:720px){
-  .brand img{ max-height:52px; }  /* mobile */
+/* Brand lockup */
+.brand{
+  display:flex;align-items:center;gap:12px;
+  color:#fff;font-weight:800;font-size:18px;line-height:1;
 }
+
+/* FIX: size by height so the image never gets cropped */
+.brand img{
+  max-height:66px;    /* desktop logo height */
+  width:auto;
+  display:block;      /* remove baseline gap */
+}
+
+/* Nav */
 .nav a{
   color:#fff;font-weight:600;margin-left:26px;letter-spacing:.02em;
   position:relative;padding:4px 0
@@ -152,7 +156,7 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
   display:flex;justify-content:space-between;align-items:center;gap:18px;
   padding:26px 20px
 }
-.site-footer img{height:34px}
+.site-footer img{height:34px;width:auto;display:block}
 .foot-links a{color:#fff;margin-left:22px;font-weight:600}
 .foot-links a:hover{color:var(--mint)}
 
@@ -173,8 +177,11 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
   .hero .title{font-size:40px}
 }
 @media (max-width:720px){
-  .site-header .wrap{height:70px}
-  .brand img{width:clamp(120px, 28vw, 160px);}
+  .site-header .wrap{
+    min-height:78px;
+    padding:8px 16px;
+  }
+  .brand img{ max-height:54px; } /* mobile logo size */
   .hero{padding:84px 18px 54px}
   .hero .title{font-size:34px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
