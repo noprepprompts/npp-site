@@ -1,36 +1,60 @@
+// No Prep Prompts — minimal JS to render Featured + Library from catalog.json
 (function(){
-  const search = document.querySelector('#search');
-  const tagsWrap = document.querySelector('.filter-tags');
-  const cards = document.querySelectorAll('[data-card]');
-  const tagButtons = tagsWrap ? Array.from(tagsWrap.querySelectorAll('button[data-tag]')) : [];
-  function applyFilters(){
-    const q = (search?.value || '').toLowerCase().trim();
-    const activeTags = tagButtons.filter(b => b.classList.contains('on')).map(b => b.dataset.tag);
-    cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      const tags = (card.dataset.tags || '').split(',');
-      const matchQ = !q || text.includes(q);
-      const matchTags = !activeTags.length || activeTags.some(t => tags.includes(t));
-      card.style.display = (matchQ && matchTags) ? '' : 'none';
-    });
-  }
-  if(search){ search.addEventListener('input', applyFilters); }
-  tagButtons.forEach(btn => btn.addEventListener('click', ()=>{ btn.classList.toggle('on'); applyFilters(); }));
+  const byId = (id) => document.getElementById(id);
 
-  const form = document.querySelector('#subscribe-form');
-  if(form){
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const email = form.querySelector('input[type="email"]').value;
-      const note = document.querySelector('#subscribe-note');
-      if(!email || !email.includes('@')){
-        note.textContent = 'Please enter a valid email.';
-        note.className = 'small';
-        return;
-      }
-      note.textContent = 'Thanks! Check your inbox for a confirmation email.';
-      note.className = 'small';
-      form.reset();
+  function cardHTML(it){
+    const isFree = !!it.free;
+    const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
+    const ctaText = isFree ? "Free — Sign up to download" : "Get on TPT";
+    const ctaHref = it.product || "#";
+
+    return `
+      <article class="card" id="${it.id}" data-tags="${(it.tags||[]).join(',')}">
+        <h3>${it.title}</h3>
+        <p>${it.subtitle}</p>
+        <div class="badges">
+          ${badgeFree}
+          ${(it.tags||[]).map(t=>`<span class="badge">${t}</span>`).join('')}
+        </div>
+        <p style="margin-top:10px">
+          <a class="btn ${isFree ? 'accent' : 'primary'}" href="${ctaHref}" ${isFree ? '' : 'target="_blank" rel="noopener"'}>${ctaText}</a>
+        </p>
+      </article>
+    `;
+  }
+
+  function renderFeatured(){
+    fetch('js/catalog.json').then(r=>r.json()).then(items=>{
+      const featured = byId('featured');
+      if(!featured) return;
+      featured.innerHTML = items.slice(0,6).map(cardHTML).join('');
     });
   }
+
+  function renderLibrary(){
+    fetch('js/catalog.json').then(r=>r.json()).then(items=>{
+      const grid = byId('catalog');
+      const search = document.getElementById('search');
+      if(!grid) return;
+
+      function draw(list){ grid.innerHTML = list.map(cardHTML).join(''); }
+      draw(items);
+
+      if(search){
+        search.addEventListener('input', ()=>{
+          const q = search.value.toLowerCase().trim();
+          const filtered = !q ? items : items.filter(it =>
+            (it.title||'').toLowerCase().includes(q) ||
+            (it.subtitle||'').toLowerCase().includes(q) ||
+            (it.tags||[]).join(' ').toLowerCase().includes(q)
+          );
+          draw(filtered);
+        });
+      }
+    });
+  }
+
+  // expose to inline scripts
+  window.renderFeatured = renderFeatured;
+  window.renderLibrary = renderLibrary;
 })();
