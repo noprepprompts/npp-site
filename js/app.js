@@ -5,7 +5,7 @@
   function cardHTML(it){
     const isFree = !!it.free;
     const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
-    const ctaText = isFree ? "Free — Sign up to download" : "Get on TPT";
+    const ctaText = isFree ? "Get the Free Starter Pack" : "Buy on TPT";
     const ctaHref = it.product || "#";
 
     return `
