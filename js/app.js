@@ -3,25 +3,34 @@
   const byId = (id) => document.getElementById(id);
 
   function cardHTML(it){
-    const isFree = !!it.free;
-    const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
-    const ctaText = isFree ? "Get the Free Starter Pack" : "Buy on TPT";
-    const ctaHref = it.product || "#";
+  const isFree = !!it.free;
+  const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
+  const ctaText = isFree ? "Get the Free Starter Pack" : (it.product === "#" ? "Coming Soon" : "Buy on TPT");
+  const ctaHref = (it.product && it.product !== "#") ? it.product : null;
 
-    return `
-      <article class="card" id="${it.id}" data-tags="${(it.tags||[]).join(',')}">
-        <h3>${it.title}</h3>
-        <p>${it.subtitle}</p>
-        <div class="badges">
-          ${badgeFree}
-          ${(it.tags||[]).map(t=>`<span class="badge">${t}</span>`).join('')}
-        </div>
-        <p style="margin-top:10px">
-          <a class="btn ${isFree ? 'accent' : 'primary'}" href="${ctaHref}" ${isFree ? '' : 'target="_blank" rel="noopener"'}>${ctaText}</a>
-        </p>
-      </article>
-    `;
+  let ctaAttrs = "";
+  if (isFree) {
+    ctaAttrs = `href="${ctaHref}"`;
+  } else if (!ctaHref) {
+    ctaAttrs = `aria-disabled="true"`;
+  } else {
+    ctaAttrs = `href="${ctaHref}" target="_blank" rel="noopener"`;
   }
+
+  return `
+    <article class="card" id="${it.id}" data-tags="${(it.tags||[]).join(',')}">
+      <h3>${it.title}</h3>
+      <p>${it.subtitle}</p>
+      <div class="badges">
+        ${badgeFree}
+        ${(it.tags||[]).map(t=>`<span class="badge">${t}</span>`).join('')}
+      </div>
+      <p style="margin-top:10px">
+        <a class="btn ${isFree ? 'accent' : 'primary'}" ${ctaAttrs}>${ctaText}</a>
+      </p>
+    </article>
+  `;
+}
 
   function renderFeatured(){
     fetch('js/catalog.json').then(r=>r.json()).then(items=>{
