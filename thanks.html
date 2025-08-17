@@ -2,146 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thanks – No Prep Prompts</title>
+
   <link rel="stylesheet" href="style.css" />
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: #f8fafc;
-      margin: 0;
-      color: #0f172a;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header img {
-      height: 48px;
-    }
-    header nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: #1E63B0;
-    }
-    .thanks {
-      flex: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    .thanks h1 {
-      font-size: 2rem;
-      color: #1E63B0;
-      margin-bottom: 1rem;
-    }
-    .thanks p {
-      font-size: 1.125rem;
-      margin: 0.5rem 0;
-    }
-    .thanks ul {
-      text-align: left;
-      max-width: 480px;
-      margin: 1.5rem auto;
-      padding-left: 1.25rem;
-      line-height: 1.6;
-    }
-    .thanks li {
-      margin-bottom: 0.75rem;
-    }
-    .cta-box {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #fff;
-    }
-    .cta-box h2 {
-      margin-top: 0;
-      color: #1E63B0;
-    }
-    .cta-box a {
-      display: inline-block;
-      background: #1E63B0;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 0.9rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-    .cta-box a:hover {
-      background: #16CE9D;
-      color: #0f172a;
-    }
-    footer {
-      background: #fff;
-      border-top: 1px solid #e2e8f0;
-      padding: 1.5rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #475569;
-    }
-    footer .socials {
-      margin-top: 0.75rem;
-    }
-    footer .socials a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: #1E63B0;
-      font-weight: 600;
-    }
+    :root { --navy:#1E63B0; --mint:#16CE9D; --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#f8fafc; }
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0;color:var(--ink);background:var(--bg);display:flex;flex-direction:column;min-height:100vh}
+    header{background:#fff;border-bottom:1px solid var(--line);padding:0.75rem 1rem}
+    .wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--navy);font-weight:700}
+    .brand img{height:44px;width:auto}
+    nav a{color:var(--navy);text-decoration:none;font-weight:600;margin-left:1rem}
+    main.thanks{flex:1;max-width:760px;margin:0 auto;padding:2.5rem 1rem;text-align:center}
+    main.thanks h1{color:var(--navy);font-size:clamp(1.6rem,2.5vw,2rem);margin:.25rem 0 1rem}
+    main.thanks p{font-size:1.125rem;margin:.4rem 0}
+    .list{max-width:520px;margin:1.25rem auto;text-align:left;line-height:1.6;padding-left:1.1rem}
+    .cta{margin-top:1.5rem;border:1px solid #cbd5e1;border-radius:10px;background:#fff;padding:1.25rem}
+    .btn{display:inline-block;background:var(--navy);color:#fff;border-radius:10px;padding:.9rem 1.1rem;font-weight:700;text-decoration:none}
+    .btn:hover{background:var(--mint);color:var(--ink)}
+    footer{background:#fff;border-top:1px solid var(--line);text-align:center;padding:1.25rem 1rem;color:var(--muted)}
+    footer .socials a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 .5rem}
+    @media (max-width:640px){nav{display:none}}
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- HEADER -->
   <header>
-    <a href="index.html"><img src="NPP Logo TM Final.png" alt="No Prep Prompts Logo"></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="subscribe.html">Subscribe</a>
-      <a href="https://YOUR-TPT-STORE-URL" target="_blank">TPT Store</a>
-    </nav>
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-white.png" alt="No Prep Prompts logo">
+        <span>No Prep Prompts</span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="https://www.teacherspayteachers.com/store/no-prep-prompts" target="_blank" rel="noopener">TPT Store</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Main Thank You Section -->
-  <div class="thanks">
+  <!-- MAIN -->
+  <main class="thanks">
     <h1>🎉 Check Your Email — Your Free Prompts Are Waiting!</h1>
     <p>Your Starter Pack (Prompts #1–3) is already on its way. Open your inbox and click <strong>Confirm</strong> to download instantly.</p>
 
-    <ul>
+    <ul class="list">
       <li>📩 <strong>Don’t see the email?</strong> Check your spam or promotions folder. Drag it to your inbox and mark as “Not Spam.”</li>
-      <li>✅ <strong>Open your Starter Pack today</strong> and copy/paste your first prompt to save ~30 minutes of prep.</li>
-      <li>🛒 <strong>Want more prompts now?</strong> Browse full prompt packs and bundles on my <a href="https://YOUR-TPT-STORE-URL" target="_blank">Teachers Pay Teachers store</a>.</li>
-      <li>🚀 <strong>Coming soon:</strong> a subscription with brand-new weekly prompts + full library access. Stay tuned!</li>
+      <li>✅ <strong>Use your first prompt today</strong> to save ~30 minutes of prep.</li>
+      <li>🛒 <strong>Need more prompts now?</strong> Browse full prompt packs and bundles on my
+        <a href="https://www.teacherspayteachers.com/store/no-prep-prompts" target="_blank" rel="noopener">Teachers Pay Teachers store</a>.
+      </li>
+      <li>🚀 <strong>Coming soon:</strong> a subscription with brand-new weekly prompts + full library access.</li>
     </ul>
 
-    <div class="cta-box">
-      <h2>Be the first to hear when the subscription launches</h2>
-      <!-- Optional: embed another ConvertKit form here -->
-      <a href="subscribe.html">Yes! Keep Me Posted</a>
+    <div class="cta">
+      <h2 style="margin-top:0;color:#1E63B0">Be the first to hear when the subscription launches</h2>
+      <!-- Optional: drop a ConvertKit inline form embed here -->
+      <a class="btn" href="subscribe.html">Yes! Keep Me Posted</a>
     </div>
-  </div>
+  </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <p>No spam — just practical, time-saving teacher tools. Unsubscribe anytime.</p>
-    <div class="socials">
-      <a href="https://www.facebook.com/YOURPAGE" target="_blank">Facebook</a> |
-      <a href="https://www.instagram.com/YOURPAGE" target="_blank">Instagram</a> |
-      <a href="https://www.youtube.com/YOURCHANNEL" target="_blank">YouTube</a>
+    <div>No spam — just practical, time-saving teacher tools. Unsubscribe anytime.</div>
+    <div class="socials" style="margin-top:.5rem">
+      <a href="https://www.facebook.com/share/1D22Zo12cd/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://www.instagram.com/noprepprompts?igsh=MTkxZ3RpanB0YndtcQ==" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://www.tiktok.com/@noprepprompts?_t=ZP-8ywEbu8UCL9&_r=1" target="_blank" rel="noopener">TikTok</a>
     </div>
   </footer>
+
 </body>
 </html>
