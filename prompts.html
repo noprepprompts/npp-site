@@ -18,7 +18,7 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="No Prep Prompts logo" />
+      <img src="assets/logo-white.png" alt="No Prep Prompts logo" />
       <span>No Prep Prompts</span>
     </a>
     <nav class="nav">
@@ -46,7 +46,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-brand">
-      <img src="assets/logo.png" alt="No Prep Prompts logo small" />
+      <img src="assets/logo-white.png" alt="No Prep Prompts logo small" />
       <p><strong>No Prep Prompts™</strong><br> © 2025. All rights reserved.</p>
     </div>
     <nav class="foot-links">
@@ -71,7 +71,12 @@
 
 <script src="js/app.js"></script>
 <script>
-  window.renderLibrary && window.renderLibrary();
+  // Ensure the catalog renders after the document is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.renderLibrary) {
+      window.renderLibrary();
+    }
+  });
 </script>
 </body>
 </html>
