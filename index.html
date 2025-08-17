@@ -20,7 +20,7 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
-      <!-- White-backed logo for dark header -->
+      <!-- Use white-backed logo on dark header -->
       <img src="/assets/logo-white.png" alt="No Prep Prompts logo">
       <span>No Prep Prompts</span>
     </a>
@@ -34,11 +34,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1 class="title">AI-Powered Prompt Cards for <em>Any</em> Grade &amp; Subject</h1>
+    <h1 class="title">Take Back Your Weekends.<br>Teach Smarter with AI-Powered Prompts.</h1>
     <p class="subtitle">
-      No Prep Prompts™ is a library of <strong>ready-to-use AI prompts</strong> for teachers.
-      <br>Copy a prompt, paste it into your preferred AI (ChatGPT, Gemini, Claude, etc.), add your details in the
-      <strong>[brackets]</strong>, and get editable, classroom-ready materials in minutes.
+      No Prep Prompts™ are built for <strong>any subject, any grade</strong> with <strong>built-in differentiation</strong> to support all learners — without hours of planning.
     </p>
     <div class="cta">
       <a class="btn accent" href="/subscribe.html">Get the Free Starter Pack</a>
@@ -85,7 +83,7 @@
       </div>
       <div class="card">
         <h3>Built-In Differentiation</h3>
-        <p>Prompts include supports for ELL/IEP/504, multiple reading levels, and student-choice — without losing rigor.</p>
+        <p>Prompts include supports for ELL/IEP/504, multiple reading levels, and student choice — without losing rigor.</p>
       </div>
       <div class="card">
         <h3>Ready in Minutes</h3>
@@ -114,7 +112,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-brand">
-      <!-- White-backed logo for dark footer -->
       <img src="/assets/logo-white.png" alt="No Prep Prompts logo small">
       <p><strong>No Prep Prompts™</strong><br>© 2025. All rights reserved.</p>
     </div>
@@ -140,8 +137,12 @@
 
 <script src="/js/app.js"></script>
 <script>
-  /* Use the helper that respects `free` + `product` fields */
-  window.renderFeatured && window.renderFeatured();
+  // Render featured prompts after DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.renderFeatured) {
+      window.renderFeatured();
+    }
+  });
 </script>
 </body>
 </html>
