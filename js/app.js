@@ -2,7 +2,7 @@
 (function(){
   const byId = (id) => document.getElementById(id);
 
-  function cardHTML(it){
+ function cardHTML(it){
   const isFree = !!it.free;
   const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
   const ctaText = isFree ? "Get the Free Starter Pack" : (it.product === "#" ? "Coming Soon" : "Buy on TPT");
@@ -31,7 +31,6 @@
     </article>
   `;
 }
-
   function renderFeatured(){
     fetch('js/catalog.json').then(r=>r.json()).then(items=>{
       const featured = byId('featured');
