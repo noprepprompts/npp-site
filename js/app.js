@@ -1,12 +1,13 @@
 // No Prep Prompts — minimal JS to render Featured + Library from catalog.json
 (function(){
   const byId = (id) => document.getElementById(id);
+  const TPT_FALLBACK = "https://www.teacherspayteachers.com/store/no-prep-prompts";
 
   function cardHTML(it){
     const isFree = !!it.free;
     const badgeFree = isFree ? `<span class="badge free">FREE</span>` : "";
-    const ctaText = isFree ? "Get the Free Starter Pack" : "Buy on TPT";
-    const ctaHref = it.product || "#";
+    const ctaText = isFree ? "Get Free Pack" : "Buy on TPT";
+    const ctaHref = isFree ? "subscribe.html#freepack" : (it.product || TPT_FALLBACK);
 
     return `
       <article class="card" id="${it.id}" data-tags="${(it.tags||[]).join(',')}">
