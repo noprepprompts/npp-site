@@ -177,3 +177,10 @@ label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
 }
+a.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #ccc;
+  color: #555;
+}
